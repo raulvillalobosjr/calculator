@@ -81,16 +81,42 @@ let sencondNum = prompt('Enter second number:');*/
 
 //BASIC CALCULATOR V2
 let firstNum = document.querySelector('#firstNum');
-let oper = document.querySelector('#operator');
+//v2 let oper = document.querySelector('#operator');
+let oper;
 let secondNum = document.querySelector('#secondNum');
 let equals = document.querySelector('#equals');
+
+//Operators
+let division = document.querySelector('#division');
+let mult = document.querySelector('#multiply');
+let subt = document.querySelector('#subtract');
+let addBtn = document.querySelector('#add');
+
+division.addEventListener('click', () => {
+  oper = '÷';
+});
+mult.addEventListener('click', () => {
+  oper = 'x';
+});
+subt.addEventListener('click', () => {
+  oper = '-';
+});
+addBtn.addEventListener('click', () => {
+  oper = '+';
+});
 
 //operate(toString(oper.value), Number(firstNum.value), Number(secondNum.value))
 
 let container = document.querySelector('#container');
 
 equals.addEventListener('click', () => {
-  let answer = operate(oper.value, Number(firstNum.value), Number(secondNum.value));
+  let answer = operate(oper, Number(firstNum.value), Number(secondNum.value));
 
   container.textContent = answer;
 });
+
+//Next up, Calculator V3
+//connect operator event listeners for onclick
+//onclick make them equal a variable, change based on operator clicked
+//when equals is pressed use what ever the operator is equals at the moment
+//etc.
