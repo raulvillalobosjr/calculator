@@ -1,31 +1,14 @@
-function add(a, b) {
-  return a + b;
-};
-
-function subtract(a, b) {
-  return a - b;
-};
-
-function multiply(a, b) {
-  return a * b;
-};
-
-function divide(a, b) {
-  return a / b;
-}
+function add(a, b) {return a + b;};
+function subtract(a, b) {return a - b;};
+function multiply(a, b) {return a * b;};
+function divide(a, b) {return a / b;}
 
 function operate(op, a, b) {
-  if (op == "+") {
-    return add(a, b);
-  } else if (op == "-") {
-    return subtract(a, b);
-  } else if (op == "x") {
-    return multiply(a, b);
-  } else if (op == "÷") {
-    return divide(a, b);
-  } else {
-    return "Invalid operator";
-  }
+  if (op == "+") {return add(a, b);}
+  else if (op == "-") {return subtract(a, b);} 
+  else if (op == "x") {return multiply(a, b);}
+  else if (op == "÷") {return divide(a, b);}
+  else {return "Invalid operator";}
 }
 
 //join array to make one number
@@ -112,7 +95,8 @@ let container = document.querySelector('#container');
 equals.addEventListener('click', () => {
   let answer = operate(oper, Number(firstNum.value), Number(secondNum.value));
 
-  container.textContent = answer;
+  //container.textContent = answer;
+  firstNum.value = answer;
 });
 
 //Next up, Calculator V3
@@ -120,3 +104,60 @@ equals.addEventListener('click', () => {
 //onclick make them equal a variable, change based on operator clicked
 //when equals is pressed use what ever the operator is equals at the moment
 //etc.
+
+//firstNum single clicks
+let zeroBtn = document.querySelector('#zero1');
+let oneBtn = document.querySelector('#one1');
+let twoBtn = document.querySelector('#two1');
+let threeBtn = document.querySelector('#three1');
+let fourBtn = document.querySelector('#four1');
+let fiveBtn = document.querySelector('#five1');
+let sixBtn = document.querySelector('#six1');
+let sevenBtn = document.querySelector('#seven1');
+let eightBtn = document.querySelector('#eight1');
+let nineBtn = document.querySelector('#nine1');
+
+zeroBtn.addEventListener('click', () => {firstNum.value += '0';});
+oneBtn.addEventListener('click', () => {firstNum.value += '1';});
+twoBtn.addEventListener('click', () => {firstNum.value += '2';});
+threeBtn.addEventListener('click', () => {firstNum.value += '3';});
+fourBtn.addEventListener('click', () => {firstNum.value += '4';});
+fiveBtn.addEventListener('click', () => {firstNum.value += '5';});
+sixBtn.addEventListener('click', () => {firstNum.value += '6';});
+sevenBtn.addEventListener('click', () => {firstNum.value += '7';});
+eightBtn.addEventListener('click', () => {firstNum.value += '8';});
+nineBtn.addEventListener('click', () => {firstNum.value += '9';});
+
+
+//secondNum single clicks
+let zeroBtn2 = document.querySelector('#zero2');
+let oneBtn2 = document.querySelector('#one2');
+let twoBtn2 = document.querySelector('#two2');
+let threeBtn2 = document.querySelector('#three2');
+let fourBtn2 = document.querySelector('#four2');
+let fiveBtn2 = document.querySelector('#five2');
+let sixBtn2 = document.querySelector('#six2');
+let sevenBtn2 = document.querySelector('#seven2');
+let eightBtn2 = document.querySelector('#eight2');
+let nineBtn2 = document.querySelector('#nine2');
+
+zeroBtn2.addEventListener('click', () => {secondNum.value += '0';});
+oneBtn2.addEventListener('click', () => {secondNum.value += '1';});
+twoBtn2.addEventListener('click', () => {secondNum.value += '2';});
+threeBtn2.addEventListener('click', () => {secondNum.value += '3';});
+fourBtn2.addEventListener('click', () => {secondNum.value += '4';});
+fiveBtn2.addEventListener('click', () => {secondNum.value += '5';});
+sixBtn2.addEventListener('click', () => {secondNum.value += '6';});
+sevenBtn2.addEventListener('click', () => {secondNum.value += '7';});
+eightBtn2.addEventListener('click', () => {secondNum.value += '8';});
+nineBtn2.addEventListener('click', () => {secondNum.value += '9';});
+
+//Clear buttons
+let clear1 = document.querySelector('#clear1');
+let clear2 = document.querySelector('#clear2');
+
+clear1.addEventListener('click', () => {firstNum.value = '0';});
+clear2.addEventListener('click', () => {secondNum.value = '0';});
+
+
+//Next: combine them into one display
