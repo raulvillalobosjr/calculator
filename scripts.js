@@ -60,13 +60,14 @@ let sencondNum = prompt('Enter second number:');*/
 } */
 
 //alert(operate(oper, firstNum, sencondNum));
-
+let num1;
+let num2;
 
 //BASIC CALCULATOR V2
 let firstNum = document.querySelector('#firstNum');
 //v2 let oper = document.querySelector('#operator');
 let oper;
-let secondNum = document.querySelector('#secondNum');
+//let secondNum = document.querySelector('#secondNum');
 let equals = document.querySelector('#equals');
 
 //Operators
@@ -77,15 +78,23 @@ let addBtn = document.querySelector('#add');
 
 division.addEventListener('click', () => {
   oper = '÷';
+  num1 = firstNum.value;
+  firstNum.value = '';
 });
 mult.addEventListener('click', () => {
   oper = 'x';
+  num1 = firstNum.value;
+  firstNum.value = '';
 });
 subt.addEventListener('click', () => {
   oper = '-';
+  num1 = firstNum.value;
+  firstNum.value = '';
 });
 addBtn.addEventListener('click', () => {
   oper = '+';
+  num1 = firstNum.value;
+  firstNum.value = '';
 });
 
 //operate(toString(oper.value), Number(firstNum.value), Number(secondNum.value))
@@ -93,7 +102,8 @@ addBtn.addEventListener('click', () => {
 let container = document.querySelector('#container');
 
 equals.addEventListener('click', () => {
-  let answer = operate(oper, Number(firstNum.value), Number(secondNum.value));
+  num2 = firstNum.value;
+  let answer = operate(oper, Number(num1), Number(num2));
 
   //container.textContent = answer;
   firstNum.value = answer;
@@ -130,6 +140,7 @@ nineBtn.addEventListener('click', () => {firstNum.value += '9';});
 
 
 //secondNum single clicks
+/*
 let zeroBtn2 = document.querySelector('#zero2');
 let oneBtn2 = document.querySelector('#one2');
 let twoBtn2 = document.querySelector('#two2');
@@ -151,13 +162,20 @@ sixBtn2.addEventListener('click', () => {secondNum.value += '6';});
 sevenBtn2.addEventListener('click', () => {secondNum.value += '7';});
 eightBtn2.addEventListener('click', () => {secondNum.value += '8';});
 nineBtn2.addEventListener('click', () => {secondNum.value += '9';});
+*/
 
 //Clear buttons
 let clear1 = document.querySelector('#clear1');
-let clear2 = document.querySelector('#clear2');
+//let clear2 = document.querySelector('#clear2');
 
-clear1.addEventListener('click', () => {firstNum.value = '0';});
-clear2.addEventListener('click', () => {secondNum.value = '0';});
+clear1.addEventListener('click', () => {firstNum.value = '';});
+//clear2.addEventListener('click', () => {secondNum.value = '';});
 
 
-//Next: combine them into one display
+//Next: Have numbers straight through
+//  -when page is fresh, have a zero
+//  -when first number is clicked delete zero and append numbers after that
+//  -when operator is pressed keep number on display until next number is pressed
+
+//add decimals
+//only allow 1 decimal on display
