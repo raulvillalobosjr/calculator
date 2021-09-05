@@ -11,63 +11,22 @@ function operate(op, a, b) {
   else {return "Invalid operator";}
 }
 
-//join array to make one number
-
-//possibly add 2 functions onclick, 1 sets new number, 1 updates display
-
-//Everytime a button clicks:
-//append button value to array
-//join array to make one value
-//set new value to text area
-
-//if further help is needed you always have google
-
-/* let arrayNum = [];
-
-function one() {arrayNum.push(1)};
-function two() {arrayNum.push(2)};
-function three() {arrayNum.push(3)};
-function four() {arrayNum.push(4)};
-function five() {arrayNum.push(5)};
-function six() {arrayNum.push(6)};
-function seven() {arrayNum.push(7)};
-function eight() {arrayNum.push(8)};
-function nine() {arrayNum.push(9)};
-function zero() {arrayNum.push(0)};
-
-let displayNum = arrayNum.join("");
-function add1toDisplay(e) {
-  one();
-  document.getElementById("textArea").innerHTML = displayNum;
-}; */
-
-
-//SUPER BASIC PROMPT CALCULATOR
-/*let firstNum = prompt('Enter first number:');
-let oper = prompt('Enter operator');
-let sencondNum = prompt('Enter second number:');*/
-
-/* if (oper == '+') {
-  alert(add(firstNum,sencondNum));
-} else if (oper == '-') {
-  alert(subtract(firstNum,sencondNum));
-} else if (oper == 'x') {
-  alert(multiply(firstNum,sencondNum));
-} else if (oper = '÷') {
-  alert(divide(firstNum,sencondNum));
-} else {
-  alert('Error, please try again');
-} */
-
-//alert(operate(oper, firstNum, sencondNum));
 let num1;
 let num2;
 
+//backup nums
+let bNum1;
+let bNum2;
+let numArr = [];
+
+//try to get continous addition
+//  messed with operators, mostly add
+//  messed with twoBtn
+//  created bNums
+
 //BASIC CALCULATOR V2
 let firstNum = document.querySelector('#firstNum');
-//v2 let oper = document.querySelector('#operator');
 let oper;
-//let secondNum = document.querySelector('#secondNum');
 let equals = document.querySelector('#equals');
 
 //Operators
@@ -76,44 +35,75 @@ let mult = document.querySelector('#multiply');
 let subt = document.querySelector('#subtract');
 let addBtn = document.querySelector('#add');
 
+let operCnt = 0;
+
 division.addEventListener('click', () => {
   oper = '÷';
   num1 = firstNum.value;
   firstNum.value = '';
+
+  operCnt += 1;
+  if (operCnt > 1) {
+    num2 = firstNum.value;
+    let answer = operate(oper, Number(num1), Number(num2));
+  
+    firstNum.value = answer;
+  };
 });
 mult.addEventListener('click', () => {
   oper = 'x';
   num1 = firstNum.value;
   firstNum.value = '';
+
+  operCnt += 1;
+  if (operCnt > 1) {
+    num2 = firstNum.value;
+    let answer = operate(oper, Number(num1), Number(num2));
+  
+    firstNum.value = answer;
+  };
 });
 subt.addEventListener('click', () => {
   oper = '-';
   num1 = firstNum.value;
   firstNum.value = '';
+
+  operCnt += 1;
+  if (operCnt > 1) {
+    num2 = firstNum.value;
+    let answer = operate(oper, Number(num1), Number(num2));
+  
+    firstNum.value = answer;
+  };
 });
 addBtn.addEventListener('click', () => {
   oper = '+';
   num1 = firstNum.value;
+  numArr.push(firstNum.value);
   firstNum.value = '';
+
+  operCnt += 1;
+  if (operCnt > 1) {
+    num2 = firstNum.value;
+    let answer = operate(oper, Number(num1), Number(num2));
+  
+    firstNum.value = answer;
+  };
+  console.log(operCnt,num1,num2,firstNum.value);
+  console.log(numArr);
 });
 
-//operate(toString(oper.value), Number(firstNum.value), Number(secondNum.value))
 
 let container = document.querySelector('#container');
 
+//Edited
 equals.addEventListener('click', () => {
   num2 = firstNum.value;
   let answer = operate(oper, Number(num1), Number(num2));
 
-  //container.textContent = answer;
   firstNum.value = answer;
 });
 
-//Next up, Calculator V3
-//connect operator event listeners for onclick
-//onclick make them equal a variable, change based on operator clicked
-//when equals is pressed use what ever the operator is equals at the moment
-//etc.
 
 //firstNum single clicks
 let zeroBtn = document.querySelector('#zero1');
@@ -139,42 +129,28 @@ eightBtn.addEventListener('click', () => {firstNum.value += '8';});
 nineBtn.addEventListener('click', () => {firstNum.value += '9';});
 
 
-//secondNum single clicks
-/*
-let zeroBtn2 = document.querySelector('#zero2');
-let oneBtn2 = document.querySelector('#one2');
-let twoBtn2 = document.querySelector('#two2');
-let threeBtn2 = document.querySelector('#three2');
-let fourBtn2 = document.querySelector('#four2');
-let fiveBtn2 = document.querySelector('#five2');
-let sixBtn2 = document.querySelector('#six2');
-let sevenBtn2 = document.querySelector('#seven2');
-let eightBtn2 = document.querySelector('#eight2');
-let nineBtn2 = document.querySelector('#nine2');
-
-zeroBtn2.addEventListener('click', () => {secondNum.value += '0';});
-oneBtn2.addEventListener('click', () => {secondNum.value += '1';});
-twoBtn2.addEventListener('click', () => {secondNum.value += '2';});
-threeBtn2.addEventListener('click', () => {secondNum.value += '3';});
-fourBtn2.addEventListener('click', () => {secondNum.value += '4';});
-fiveBtn2.addEventListener('click', () => {secondNum.value += '5';});
-sixBtn2.addEventListener('click', () => {secondNum.value += '6';});
-sevenBtn2.addEventListener('click', () => {secondNum.value += '7';});
-eightBtn2.addEventListener('click', () => {secondNum.value += '8';});
-nineBtn2.addEventListener('click', () => {secondNum.value += '9';});
-*/
-
 //Clear buttons
 let clear1 = document.querySelector('#clear1');
-//let clear2 = document.querySelector('#clear2');
 
-clear1.addEventListener('click', () => {firstNum.value = '';});
-//clear2.addEventListener('click', () => {secondNum.value = '';});
+clear1.addEventListener('click', () => {
+  firstNum.value = '';
+  num1 = 0;
+  num2 = 0;
+  operCnt = 0;
+  numArr = [];
+});
 
+//when page is fresh and after i press clear
 
-//Next: Have numbers straight through
-//  -when page is fresh, have a zero
-//  -when first number is clicked delete zero and append numbers after that
+//Make a difference from new numbers and old
+//  -ex: when i type 2 for the first time and when i type it alot for
+//  like 22222 and pressing an operator(see iphone calc. for reference)
+
+//Try calculating results from array
+//  -keep appending to array
+//  -use last and second to last to calculate
+
+//Have numbers straight through
 //  -when operator is pressed keep number on display until next number is pressed
 
 //add decimals
